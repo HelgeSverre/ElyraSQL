@@ -1,0 +1,389 @@
+/* ElyraSQL docs theme — visual match for elyracode.com.
+   Tokens lifted verbatim from the site's compiled Tailwind build:
+   a pure-neutral gray scale (chroma 0) with a single orange accent. */
+
+:root {
+  --elyra-orange: oklch(70.5% 0.213 47.604);   /* orange-500 */
+  --elyra-orange-600: oklch(64.6% 0.222 41.116);
+  --elyra-orange-400: oklch(75% 0.183 55.934);
+  --elyra-orange-950: oklch(26.6% 0.079 36.259);
+
+  --elyra-50: oklch(98.5% 0 0);
+  --elyra-100: oklch(97% 0 0);
+  --elyra-200: oklch(92.2% 0 0);
+  --elyra-400: oklch(70.8% 0 0);
+  --elyra-500: oklch(55.6% 0 0);
+  --elyra-600: oklch(43.9% 0 0);
+  --elyra-700: oklch(37.1% 0 0);
+  --elyra-800: oklch(26.9% 0 0);
+  --elyra-900: oklch(20.5% 0 0);
+  --elyra-950: oklch(14.5% 0 0);
+
+  --md-text-font: "Inter";
+  --md-code-font: "ui-monospace";
+
+  /* elyracode.com uses a white header with dark text, not a colored bar.
+     mkdocs.yml sets primary/accent to `custom` so Material ships no
+     competing [data-md-color-primary=indigo] rules to fight over. */
+  --md-primary-fg-color: #fff;
+  --md-primary-fg-color--light: var(--elyra-50);
+  --md-primary-fg-color--dark: var(--elyra-200);
+  --md-primary-bg-color: var(--elyra-950);
+  --md-primary-bg-color--light: var(--elyra-600);
+  --md-accent-fg-color: var(--elyra-orange-600);
+  --md-accent-fg-color--transparent: color-mix(in oklab, var(--elyra-orange) 10%, transparent);
+  --md-accent-bg-color: #fff;
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-fg-color: var(--elyra-950);
+  --md-default-fg-color--light: var(--elyra-600);
+  --md-default-fg-color--lighter: var(--elyra-400);
+  --md-default-fg-color--lightest: var(--elyra-200);
+  --md-default-bg-color: #fff;
+
+  --md-typeset-color: var(--elyra-600);
+  --md-typeset-a-color: var(--elyra-orange-600);
+  --md-code-bg-color: var(--elyra-50);
+  --md-code-fg-color: var(--elyra-800);
+
+  --md-footer-bg-color: var(--elyra-50);
+  --md-footer-bg-color--dark: var(--elyra-50);
+  --md-footer-fg-color: var(--elyra-950);
+  --md-footer-fg-color--light: var(--elyra-500);
+  --md-footer-fg-color--lighter: var(--elyra-400);
+
+  --elyra-border: var(--elyra-200);
+  --elyra-surface: var(--elyra-50);
+  --elyra-accent: var(--elyra-orange-600);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-fg-color: #fff;
+  --md-default-fg-color--light: var(--elyra-400);
+  --md-default-fg-color--lighter: var(--elyra-500);
+  --md-default-fg-color--lightest: var(--elyra-800);
+  --md-default-bg-color: var(--elyra-950);
+
+  --md-typeset-color: var(--elyra-400);
+  --md-typeset-a-color: var(--elyra-orange-400);
+  --md-code-bg-color: var(--elyra-900);
+  --md-code-fg-color: var(--elyra-200);
+
+  --md-primary-fg-color: var(--elyra-950);
+  --md-primary-fg-color--light: var(--elyra-900);
+  --md-primary-fg-color--dark: #000;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: var(--elyra-400);
+  --md-accent-fg-color: var(--elyra-orange-400);
+
+  --md-footer-bg-color: var(--elyra-900);
+  --md-footer-bg-color--dark: var(--elyra-900);
+  --md-footer-fg-color: #fff;
+  --md-footer-fg-color--light: var(--elyra-400);
+  --md-footer-fg-color--lighter: var(--elyra-500);
+
+  --elyra-border: var(--elyra-800);
+  --elyra-surface: var(--elyra-900);
+  --elyra-accent: var(--elyra-orange-400);
+}
+
+/* ---------- typography ---------- */
+
+body,
+.md-typeset {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+.md-typeset {
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+}
+
+.md-typeset h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-top: 2.4em;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--elyra-border);
+}
+
+.md-typeset h3,
+.md-typeset h4 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* The site's signature label: mono, uppercase, very wide tracking. */
+.md-nav__title,
+.md-nav__item--section > .md-nav__link,
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-family: var(--md-code-font-family);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ---------- announce strip ---------- */
+
+.elyra-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 61rem;
+  margin: 0 auto;
+  padding: 0 0.8rem;
+  height: 2rem;
+  font-family: var(--md-code-font-family);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-announce {
+  background: var(--md-default-bg-color);
+  border-bottom: 1px solid var(--elyra-border);
+}
+
+.elyra-strip__dot {
+  display: inline-block;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  background: oklch(69.6% 0.17 162.48); /* emerald-500 */
+  animation: elyra-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes elyra-pulse {
+  50% { opacity: 0.35; }
+}
+
+@media screen and (max-width: 44.9844em) {
+  .elyra-strip__right { display: none; }
+}
+
+/* ---------- header ---------- */
+
+.md-header {
+  background-color: color-mix(in oklab, var(--md-default-bg-color) 80%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--elyra-border);
+  box-shadow: none;
+  color: var(--md-default-fg-color);
+}
+
+.md-header__title {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.md-header__button.md-logo :is(img, svg) {
+  height: 1.35rem;
+  width: 1.35rem;
+}
+
+/* Material's search chrome assumes a colored header; on white it disappears. */
+.md-search__form {
+  background-color: var(--elyra-surface);
+  border: 1px solid var(--elyra-border);
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+.md-search__form:hover {
+  background-color: var(--elyra-surface);
+  border-color: var(--elyra-accent);
+}
+
+.md-search__input::placeholder {
+  color: var(--md-default-fg-color--lighter);
+}
+
+.md-search__input,
+.md-search__icon {
+  color: var(--md-default-fg-color--light);
+}
+
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* ---------- navigation ---------- */
+
+.md-nav {
+  font-size: 0.68rem;
+}
+
+.md-nav__item--section > .md-nav__link,
+.md-nav__title {
+  color: var(--md-default-fg-color--light);
+}
+
+.md-nav__link--active,
+.md-nav__link:is(:hover, :focus) {
+  color: var(--elyra-accent);
+}
+
+.md-nav--secondary .md-nav__link--active {
+  font-weight: 500;
+}
+
+.md-sidebar--secondary .md-nav__list .md-nav__link {
+  border-left: 1px solid transparent;
+  padding-left: 0.6rem;
+}
+
+.md-sidebar--secondary .md-nav__link--active {
+  border-left-color: var(--elyra-accent);
+}
+
+/* ---------- links & buttons ---------- */
+
+.md-typeset a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--elyra-accent) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+.md-typeset a:hover {
+  text-decoration-color: var(--elyra-accent);
+}
+
+.md-typeset .md-button {
+  background: var(--elyra-orange);
+  border: none;
+  border-radius: 0.75rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 0.6em 1.4em;
+  text-decoration: none;
+}
+
+.md-typeset .md-button:is(:hover, :focus) {
+  background: var(--elyra-orange-600);
+  color: #fff;
+}
+
+.md-typeset .md-button--primary {
+  background: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+}
+
+.md-typeset .md-button--primary:is(:hover, :focus) {
+  background: var(--elyra-orange);
+  color: #fff;
+}
+
+/* ---------- surfaces: cards, code, admonitions, tables ---------- */
+
+.md-typeset .grid.cards > :is(ul, ol) > li,
+.md-typeset .grid > .card {
+  border: 1px solid var(--elyra-border);
+  border-radius: 1rem;
+  box-shadow: none;
+  padding: 1.1rem;
+  transition: border-color 125ms, transform 125ms;
+}
+
+.md-typeset .grid.cards > :is(ul, ol) > li:hover {
+  border-color: var(--elyra-accent);
+  transform: translateY(-2px);
+}
+
+.md-typeset .grid.cards :is(.twemoji, .lg) svg,
+.md-typeset .grid.cards > ul > li > p:first-child .twemoji {
+  fill: var(--elyra-accent);
+}
+
+.md-typeset pre > code,
+.md-typeset .highlight > pre,
+.md-typeset .highlighttable {
+  border-radius: 0.9rem;
+}
+
+.md-typeset pre > code {
+  border: 1px solid var(--elyra-border);
+}
+
+.md-typeset code {
+  border-radius: 0.35rem;
+  font-size: 0.85em;
+}
+
+.md-typeset :is(.admonition, details) {
+  border: 1px solid var(--elyra-border);
+  border-left-width: 1px;
+  border-radius: 1rem;
+  box-shadow: none;
+  font-size: 0.72rem;
+}
+
+.md-typeset :is(.admonition-title, summary) {
+  background: var(--elyra-surface);
+  border-radius: 1rem 1rem 0 0;
+}
+
+/* Material tints the whole box per admonition type (cyan info, orange warning).
+   elyracode.com keeps every surface neutral, so let only the icon carry the
+   semantic colour. The [class] tie-breaks Material's `.md-typeset .warning`. */
+.md-typeset :is(.admonition, details)[class] {
+  border-color: var(--elyra-border);
+}
+
+.md-typeset :is(.admonition-title, summary)[class] {
+  background: var(--elyra-surface);
+}
+
+.md-typeset :is(.admonition-title, summary)::before {
+  background-color: var(--elyra-accent);
+}
+
+.md-typeset table:not([class]) {
+  border: 1px solid var(--elyra-border);
+  border-radius: 1rem;
+  box-shadow: none;
+  font-size: 0.7rem;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--elyra-surface);
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset hr {
+  border-bottom-color: var(--elyra-border);
+}
+
+/* ---------- footer ---------- */
+
+.md-footer-meta {
+  border-top: 1px solid var(--elyra-border);
+}
+
+.md-footer {
+  border-top: 1px solid var(--elyra-border);
+}
+
+.md-copyright__highlight {
+  color: var(--md-footer-fg-color--light);
+}
